@@ -1,0 +1,32 @@
+{
+  "name": "er-lab",
+  "main": "index.js",
+  "version": "1.0.0",
+  "description": "ER LAB is the official app from Nimble Neuron that alerts you to Eternal Return's announcements, events, and esports news.",
+  "author": "Nimble Neuron",
+  "scripts": {
+    "start": "electron index.js",
+    "build": "electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "productName": "ER LAB",
+    "appId": "com.nimbleneuron.erlab",
+    "win": {
+      "target": [
+        "portable"
+      ]
+    },
+    "portable": {
+      "artifactName": "erlab.exe"
+    },
+    "directories": {
+      "output": "./setup"
+    },
+    "asar": true,
+    "icon": "./assets/icon.ico"
+  }
+}
