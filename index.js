@@ -7,6 +7,7 @@ class App {
 
     constructor() {
         this.#_app.disableHardwareAcceleration();
+        this.#start();
     }
 
     #createWindow() {
@@ -23,7 +24,7 @@ class App {
         })
     }
     
-    async #finishLoad(window) {
+    #finishLoad(window) {
         window.loadURL(this.#_BASEURL);
         window.webContents.on('did-finish-load', async () => await this.#removeElements(window));
     }
@@ -38,10 +39,10 @@ class App {
             `)
     }
 
-    start() {
+    #start() {
         this.#_app.whenReady().then(() => this.#finishLoad(this.#createWindow()))
         this.#_app.on('window-all-closed', () => this.#_app.quit())
     }
 }
 
-new App().start()
+new App()
