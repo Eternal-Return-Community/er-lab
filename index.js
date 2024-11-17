@@ -23,18 +23,18 @@ class App {
             backgroundColor: '#17171b',
         })
     }
-    
+
     #finishLoad(window) {
         window.loadURL(this.#_BASEURL);
         window.webContents.on('did-finish-load', async () => await this.#removeElements(window));
     }
-    
+
     async #removeElements(window) {
         await window.webContents.executeJavaScript(`
             document.title = 'ER LAB';
             for(const e of ['pop_wrap', 'dimmed']) {
-                const x = document.querySelectorAll('.'.concat(e))
-                x.forEach(r => r.remove())
+                document.querySelectorAll('.'.concat(e))
+                    .forEach(r => r.remove())
             }
             `)
     }
